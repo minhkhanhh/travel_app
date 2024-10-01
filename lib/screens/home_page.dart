@@ -16,10 +16,14 @@ class _HomePageState extends State<HomePage> {
   }
 
   Future<void> fetchPopularDestinations() async {
-    List places = await ApiService.getAllPlace();
-    setState(() {
-      popularDestinations = places;
-    });
+    try {
+      List places = await ApiService.getAllPlace();
+      setState(() {
+        popularDestinations = places;
+      });
+    } catch (error) {
+      print('Error fetching places: $error');
+    }
   }
 
   @override
@@ -27,8 +31,7 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Hi Guy!'),
-          backgroundColor: Colors.purple,
-
+        backgroundColor: Colors.purple,
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -40,7 +43,6 @@ class _HomePageState extends State<HomePage> {
               style: TextStyle(
                 fontSize: 18,
                 fontWeight: FontWeight.bold,
-
               ),
             ),
             SizedBox(height: 10),
@@ -62,24 +64,24 @@ class _HomePageState extends State<HomePage> {
                   onPressed: () {},
                   child: Text('Hotels'),
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.orange[200], // Sửa ở đây
-                    foregroundColor: Colors.white, // Thay onPrimary bằng foregroundColor
+                    backgroundColor: Colors.orange[200],
+                    foregroundColor: Colors.white,
                   ),
                 ),
                 ElevatedButton(
                   onPressed: () {},
                   child: Text('Flights'),
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.pink[200], // Sửa ở đây
-                    foregroundColor: Colors.white, // Thay onPrimary bằng foregroundColor
+                    backgroundColor: Colors.pink[200],
+                    foregroundColor: Colors.white,
                   ),
                 ),
                 ElevatedButton(
                   onPressed: () {},
                   child: Text('All'),
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.green[200], // Sửa ở đây
-                    foregroundColor: Colors.white, // Thay onPrimary bằng foregroundColor
+                    backgroundColor: Colors.green[200],
+                    foregroundColor: Colors.white,
                   ),
                 ),
               ],
@@ -114,19 +116,19 @@ class _HomePageState extends State<HomePage> {
                             borderRadius: BorderRadius.circular(10),
                             image: DecorationImage(
                               fit: BoxFit.cover,
-                              image: NetworkImage(place['image']),
+                              image: NetworkImage(place['imageUrl']), // Sử dụng imageUrl từ JSON
                             ),
                           ),
                         ),
                         SizedBox(height: 5),
                         Text(
-                          place['name'],
+                          place['name'], // Hiển thị tên địa điểm
                           style: TextStyle(fontWeight: FontWeight.bold),
                         ),
                         Row(
                           children: [
                             Icon(Icons.star, color: Colors.yellow, size: 16),
-                            Text('${place['rating']}'),
+                            Text('${place['rating']}'), // Hiển thị đánh giá của địa điểm
                           ],
                         ),
                       ],
