@@ -15,9 +15,9 @@ public class PlaceController {
     @GetMapping("/api/places/getAllPlace")
     public List<Place> getAllPlaces() {
         return Arrays.asList(
-                new Place("Hoi An", 4.0, "https://example.com/hoian.jpg"),
-                new Place("Sai Gon", 4.5, "https://example.com/saigon.jpg"),
-                new Place("Da Lat", 4.7, "https://example.com/dalat.jpg")
+                 new Place("Hoi An", 4.0, "/images/hoian.jpg"),
+                new Place("Sai Gon", 4.5, "/images/saigon.jpg"),
+                new Place("Da Lat", 4.7, "/images/dalat.jpg")
         );
     }
 }
