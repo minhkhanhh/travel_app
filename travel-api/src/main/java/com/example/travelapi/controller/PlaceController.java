@@ -15,9 +15,9 @@ public class PlaceController {
     @GetMapping("/api/places/getAllPlace")
     public List<Place> getAllPlaces() {
         return Arrays.asList(
-                 new Place("Hoi An", 4.0, "/images/hoian.jpg"),
-                new Place("Sai Gon", 4.5, "/images/saigon.jpg"),
-                new Place("Da Lat", 4.7, "/images/dalat.jpg")
+                new Place("Hoi An", 4.0, "https://kyuchoian.com/userfiles/image/tour/hoi-an/2020/bo-anh-dep-hoi-an/pho-co/tren-cao/hoi-an-tren-cao-1.jpg"),
+                new Place("Sai Gon", 4.5, "https://cdn3.ivivu.com/2023/12/mua-sam-t%E1%BA%A1i-sai-gon-ivivu.jpeg"),
+                new Place("Da Lat", 4.7, "https://www.dalattrip.com/dulich/media/2017/12/thanh-pho-da-lat.jpg")
         );
     }
 }
